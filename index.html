@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>ZenManga</title>
-  <base href="/Manga-mangadex/">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <base href="/Manga-mangadex/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -49,13 +51,13 @@
       }
     }
   </script>
+
   <style>
     body {
       background-color: #121212;
       color: #e0e0e0;
       -webkit-tap-highlight-color: transparent;
     }
-    /* Hide scrollbar for clean UI */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -64,7 +66,6 @@
       scrollbar-width: none;
     }
   </style>
-<!-- Import map included for fallback/preview environments -->
 <script type="importmap">
 {
   "imports": {
@@ -74,21 +75,20 @@
     "rxjs/webSocket": "https://esm.sh/rxjs@^7.8.2/webSocket?conditions=es2015",
     "rxjs/testing": "https://esm.sh/rxjs@^7.8.2/testing?conditions=es2015",
     "rxjs/fetch": "https://esm.sh/rxjs@^7.8.2/fetch?conditions=es2015",
-    "@angular/common": "https://esm.sh/@angular/common@^21.0.8?external=rxjs",
-    "@angular/common/http": "https://esm.sh/@angular/common@^21.0.8/http?external=rxjs",
-    "@angular/platform-browser": "https://esm.sh/@angular/platform-browser@^21.0.8?external=rxjs",
-    "@angular/compiler": "https://esm.sh/@angular/compiler@^21.0.8?external=rxjs",
-    "@angular/router": "https://esm.sh/@angular/router@^21.0.8?external=rxjs",
-    "@angular/core": "https://esm.sh/@angular/core@^21.0.8?external=rxjs",
-    "@angular/forms": "https://esm.sh/@angular/forms@^21.0.8?external=rxjs",
+    "react": "https://esm.sh/react@^19.2.3?external=rxjs",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client?external=rxjs",
+    "react/jsx-runtime": "https://esm.sh/react@^19.2.3/jsx-runtime?external=rxjs",
     "vite": "https://esm.sh/vite@^7.3.1?external=rxjs",
-    "@analogjs/vite-plugin-angular": "https://esm.sh/@analogjs/vite-plugin-angular@^2.2.1?external=rxjs"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2?external=rxjs",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0?external=rxjs",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0?external=rxjs"
   }
 }
 </script>
 </head>
+
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-dark-text overflow-hidden selection:bg-brand-500 selection:text-white">
-  <app-root></app-root>
+  <div id="root"></div>
   <script type="module" src="./index.tsx"></script>
 </body>
 </html>

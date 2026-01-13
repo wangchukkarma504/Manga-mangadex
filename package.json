@@ -1,9 +1,7 @@
 
 {
-  "name": "zen-manga",
-  "version": "0.1.0",
-  "homepage": "https://wangchukkarma504.github.io/Manga-mangadex",
-  "private": true,
+  "name": "zen-manga-react",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,20 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/compiler": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/forms": "^19.0.0",
-    "@angular/platform-browser": "^19.0.0",
-    "@angular/router": "^19.0.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.3",
+    "lucide-react": "^0.363.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^1.10.0",
-    "@angular/compiler-cli": "^19.0.0",
-    "typescript": "~5.5.0",
-    "vite": "^5.4.0"
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
   }
 }
