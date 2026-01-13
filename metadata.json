@@ -1,0 +1,5 @@
+{
+  "name": "Manga-mangadex",
+  "description": "A fast, mobile-first manga reader with offline capabilities, favorites, and smart progress tracking.",
+  "requestFramePermissions": []
+}
