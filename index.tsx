@@ -1,15 +1,15 @@
-
 import '@angular/compiler';
+import './styles.css';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './src/app.component';
+import { AppComponent } from './app.component';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideRouter, withHashLocation, Routes } from '@angular/router';
 
-import { HomeComponent } from './src/components/home.component';
-import { ReaderComponent } from './src/components/reader.component';
-import { FavoritesComponent } from './src/components/favorites.component';
-import { MangaDetailComponent } from './src/components/manga-detail.component';
+import { HomeComponent } from './home.component';
+import { ReaderComponent } from './reader.component';
+import { FavoritesComponent } from './favorites.component';
+import { MangaDetailComponent } from './manga-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
