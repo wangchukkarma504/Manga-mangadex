@@ -91,28 +91,45 @@ import { StorageService } from '../services/storage.service';
 
         <!-- Chapters -->
         <div class="mt-8">
-          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-3">Chapters</h3>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">Chapters</h3>
+             @if (!loadingChapters() && chapters().length > 0) {
+               <span class="text-xs font-bold text-brand-600 bg-brand-50 dark:bg-brand-900/20 dark:text-brand-400 px-3 py-1 rounded-full border border-brand-100 dark:border-brand-900">
+                 {{ chapters().length }} Total
+               </span>
+             }
+          </div>
           
           @if (loadingChapters()) {
-            <div class="space-y-2">
-              <div class="h-12 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
-              <div class="h-12 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
-              <div class="h-12 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
+            <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+              @for (i of [1,2,3,4,5,6,7,8]; track i) {
+                <div class="h-12 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
+              }
             </div>
           } @else if (chapters().length > 0) {
-             <div class="grid grid-cols-1 gap-2">
+             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
                @for (chap of chapters(); track chap.chapter) {
                  <a [routerLink]="['/read', mangaId(), chap.chapter]" 
-                    class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-brand-50 dark:hover:bg-gray-800 border border-transparent hover:border-brand-200 transition-colors">
-                   <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Chapter {{ chap.chapter }}</span>
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-400">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                   </svg>
+                    class="group flex flex-col items-center justify-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl hover:bg-brand-500 hover:text-white dark:hover:bg-brand-500 border border-gray-100 dark:border-gray-800 transition-all active:scale-95 relative overflow-hidden">
+                    
+                    <!-- Progress Indicator if read -->
+                    @if (isChapterRead(chap.chapter)) {
+                      <div class="absolute top-0 right-0 w-2 h-2 bg-brand-500 rounded-bl-lg"></div>
+                    }
+
+                   <span class="text-sm font-bold text-gray-700 dark:text-gray-300 group-hover:text-white">
+                     {{ chap.chapter }}
+                   </span>
+                   <span class="text-[10px] text-gray-400 group-hover:text-brand-100 uppercase tracking-wider">
+                     Ch.
+                   </span>
                  </a>
                }
              </div>
           } @else {
-            <p class="text-gray-400 text-sm">No chapters found.</p>
+            <div class="p-8 text-center bg-gray-50 dark:bg-gray-800/30 rounded-2xl border border-dashed border-gray-200 dark:border-gray-800">
+              <p class="text-gray-400 text-sm">No chapters found for this manga.</p>
+            </div>
           }
         </div>
       </div>
@@ -162,13 +179,28 @@ export class MangaDetailComponent {
       // The API structure returns the full chapter list in the detail response.
       const data = await this.mangaService.getMangaDetail(id, '1');
       if (data && data.chapterList) {
-        this.chapters.set(data.chapterList);
+        // Sort chapters numerically if possible
+        const sorted = [...data.chapterList].sort((a, b) => {
+          return parseFloat(a.chapter) - parseFloat(b.chapter);
+        });
+        this.chapters.set(sorted);
       }
     } catch (e) {
       console.error('Failed to load chapters', e);
     } finally {
       this.loadingChapters.set(false);
     }
+  }
+
+  isChapterRead(chapter: string): boolean {
+    const progress = this.storage.getProgress(this.mangaId());
+    if (!progress) return false;
+    // Simple check: if current progress chapter is > this chapter, it's read.
+    // Or if it IS this chapter, it's in progress.
+    // Since we don't track every single read chapter in this simple app (only last position), 
+    // we can only guess based on the "last read" pointer.
+    // Let's just mark the *current* one for now if it matches.
+    return progress.chapter === chapter;
   }
 
   startReading() {

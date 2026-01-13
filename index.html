@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>ZenManga</title>
-  <base href="/">
+  <base href="/Manga-mangadex/">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -64,6 +64,7 @@
       scrollbar-width: none;
     }
   </style>
+<!-- Import map included for fallback/preview environments -->
 <script type="importmap">
 {
   "imports": {
@@ -79,12 +80,14 @@
     "@angular/compiler": "https://esm.sh/@angular/compiler@^21.0.8?external=rxjs",
     "@angular/router": "https://esm.sh/@angular/router@^21.0.8?external=rxjs",
     "@angular/core": "https://esm.sh/@angular/core@^21.0.8?external=rxjs",
-    "@angular/forms": "https://esm.sh/@angular/forms@^21.0.8?external=rxjs"
+    "@angular/forms": "https://esm.sh/@angular/forms@^21.0.8?external=rxjs",
+    "vite": "https://esm.sh/vite@^7.3.1?external=rxjs"
   }
 }
 </script>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-dark-text overflow-hidden selection:bg-brand-500 selection:text-white">
   <app-root></app-root>
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
