@@ -38,8 +38,8 @@ export interface MangaDetailResponse {
 export class MangaService {
   private http = inject(HttpClient);
   
-  // Updated to the new exec URL provided by user
-  private readonly API_URL = 'https://script.google.com/macros/s/AKfycbw8cMWs0NCmrXa3GuNIOlvVznnf-v75KBvQA-Ikm7JNZvKuRrm08CViTSTCGuUa2rqE/exec';
+  // Updated to the correct exec URL provided in requirements
+  private readonly API_URL = 'https://script.google.com/macros/s/AKfycbzutjzuXt-7-O8c0O_OOpSj4NkX6-qF_zithhbgp4GrkemDnG7sE-qA-A8uZhcYXFkx/exec';
 
   // State
   private _mangaList = signal<Manga[]>([]);
