@@ -7,7 +7,6 @@ import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-reader',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
     <div class="relative w-full h-full bg-black">

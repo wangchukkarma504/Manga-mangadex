@@ -8,7 +8,6 @@ import { MangaCardComponent } from './ui/manga-card.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [CommonModule, FormsModule, MangaCardComponent],
   template: `
     <div class="min-h-full pb-20">

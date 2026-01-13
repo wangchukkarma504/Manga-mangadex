@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
-  standalone: true,
   imports: [CommonModule, MangaCardComponent, RouterLink],
   template: `
     <div class="min-h-full p-4 pb-20">

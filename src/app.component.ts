@@ -7,7 +7,6 @@ import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
   template: `
     <div class="h-[100dvh] flex flex-col w-full max-w-md mx-auto bg-white dark:bg-dark-bg relative shadow-2xl overflow-hidden">

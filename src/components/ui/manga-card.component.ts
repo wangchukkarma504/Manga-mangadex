@@ -7,7 +7,6 @@ import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-manga-card',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
     <div class="group relative flex flex-col h-full bg-white dark:bg-dark-surface rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
